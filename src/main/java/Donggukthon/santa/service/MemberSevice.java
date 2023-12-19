@@ -57,17 +57,15 @@ public class MemberSevice {
         return memberNSubmissionResponseDTOList;
     }
 
-    public CertificationResponseDTO getDonatePersonCertification(Long id) {
-
+    public Optional<CertificationResponseDTO> getDonatePersonCertification(Long id) {
         Optional<Member> member = memberRepository.findById(id);
         if (!member.isPresent()) {
-            // 적절한 예외 처리 또는 오류 메시지 반환
-            throw new EntityNotFoundException("Member not found with ID: " + id);
+            return Optional.empty(); // Member not found
         }
+
         Optional<Submission> submission = submissionRepository.findByMemberId(id);
         if (!submission.isPresent()) {
-            // 적절한 예외 처리 또는 오류 메시지 반환
-            throw new EntityNotFoundException("Submission not found for Member ID: " + id);
+            return Optional.empty(); // Submission not found
         }
 
         SubmissionResponseDTO submissionResponseDTO = SubmissionResponseDTO.builder()
@@ -91,7 +89,7 @@ public class MemberSevice {
                 .memberResponseDTO(memberResponseDTO)
                 .build();
 
-        return certificationResponseDTO;
+        return Optional.of(certificationResponseDTO);
     }
 
     public Long findByEmail(String email) {

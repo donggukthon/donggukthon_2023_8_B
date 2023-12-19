@@ -16,9 +16,10 @@ public enum ErrorStatus {
     /** /user **/
     HAVE_USER(500, "FAIL", "이미 존재하는 이매일입니다."),
     JOIN_USER(500, "FAIL", "회원가입에 실패하였습니다."),
-    LOGIN_USER(401, "FAIL", "비밀번호가 일치하지 않습니다.");
+    LOGIN_USER(401, "FAIL", "비밀번호가 일치하지 않습니다."),
 
     /** /certification **/
+    NON_DONATE(400, "FAIL", "아직 기부하지 않은 멤버입니다.");
 
     /** /submission **/
 

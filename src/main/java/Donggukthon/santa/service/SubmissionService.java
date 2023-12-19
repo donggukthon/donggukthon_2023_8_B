@@ -29,7 +29,6 @@ public class SubmissionService {
         // 데이터베이스에 저장
         submissionRepository.save(submission);
 
-
     }
 
 }

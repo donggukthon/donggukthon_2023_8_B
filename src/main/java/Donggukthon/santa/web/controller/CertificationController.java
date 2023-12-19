@@ -7,8 +7,10 @@ import Donggukthon.santa.web.apiResponse.ErrorStatus;
 import Donggukthon.santa.web.apiResponse.SuccessStatus;
 import Donggukthon.santa.web.dto.request.SubmissionRequestDTO;
 import Donggukthon.santa.web.dto.response.CertificationResponseDTO;
+import Donggukthon.santa.web.dto.response.MemberDTO;
 import Donggukthon.santa.web.dto.response.MemberResponseDTO;
 import Donggukthon.santa.web.dto.response.SubmissionResponseDTO;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,22 +29,28 @@ public class CertificationController {
 
     // 버튼 클릭 시 증명서 보이기
     @GetMapping
-    public ApiResponse<CertificationResponseDTO> getCertification(
-            @RequestHeader("Authorization") String accessToken,
-            @RequestBody SubmissionRequestDTO submissionRequestDTO)
+    public ApiResponse<CertificationResponseDTO> getCertification(@RequestHeader("Authorization") String authorizationHeader)
     {
-        if (!tokenProvider.validateToken(accessToken)) {
-            // 토큰이 유효하지 않으면 적절한 응답 반환
+        String token = authorizationHeader.replace("Bearer ", "");
+
+        Long memberId;
+
+        try {
+            // 유효한 토큰에서 userEmail 추출
+            String userEmail = tokenProvider.verifyToken(token);
+            memberId = memberSevice.findByEmail(userEmail);
+
+        } catch (Exception e) {
             return new ApiResponse<>(ErrorStatus.INVALID_TOKEN); // 에러 응답 구현
         }
 
-        // 유효한 토큰에서 userEmail 추출
-        String userEmail = tokenProvider.verifyToken(accessToken);
+        try {
+            CertificationResponseDTO certificationResponseDTO = memberSevice.getDonatePersonCertification(memberId)
+                    .orElseThrow(RuntimeException::new);
 
-        Long memberId = memberSevice.findByEmail(userEmail);
-
-        CertificationResponseDTO certificationResponseDTO = memberSevice.getDonatePersonCertification(memberId);
-
-        return new ApiResponse<>(SuccessStatus.READ_CERTIFICATION, certificationResponseDTO);
+            return new ApiResponse<>(SuccessStatus.READ_CERTIFICATION, certificationResponseDTO);
+        } catch (RuntimeException e) {
+            return new ApiResponse<>(ErrorStatus.NON_DONATE);
+        }
     }
 }
