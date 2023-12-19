@@ -31,7 +31,6 @@ public class CertificationController {
             @RequestHeader("Authorization") String accessToken,
             @RequestBody SubmissionRequestDTO submissionRequestDTO)
     {
-
         if (!tokenProvider.validateToken(accessToken)) {
             // 토큰이 유효하지 않으면 적절한 응답 반환
             return new ApiResponse<>(ErrorStatus.INVALID_TOKEN); // 에러 응답 구현
