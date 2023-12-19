@@ -13,5 +13,7 @@ public class DecorationResponseDTO {
     private String location;
 //    private String color;
     private int scale;
+    private int degree;
+    private String floor;
     private String createdAt;
 }

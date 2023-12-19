@@ -24,7 +24,8 @@ public class Decoration {
     private Integer scale;
     private String location; // 위치 기본 값
     private LocalDateTime createdAt;
-
+    private int degree;
+    private String floor;
 
     @OneToMany(mappedBy = "decoration")
     private List<MemberDecorationRelation> memberDecorationRelations;
