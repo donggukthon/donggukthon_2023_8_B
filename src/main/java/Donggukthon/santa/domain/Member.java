@@ -27,6 +27,8 @@ public class Member {
     private String phoneNumber;
     private LocalDateTime createdAt;
 
+    private String meta;
+
     @OneToMany(mappedBy = "member")
     private List<Submission> submissions;
 

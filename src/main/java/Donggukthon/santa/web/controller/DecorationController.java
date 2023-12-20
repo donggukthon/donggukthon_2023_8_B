@@ -1,32 +1,39 @@
 package Donggukthon.santa.web.controller;
 
 import Donggukthon.santa.config.TokenProvider;
+import Donggukthon.santa.service.DecorationService;
 import Donggukthon.santa.service.MemberService;
 import Donggukthon.santa.web.apiResponse.ApiResponse;
 import Donggukthon.santa.web.apiResponse.ErrorStatus;
 import Donggukthon.santa.web.apiResponse.SuccessStatus;
-import Donggukthon.santa.web.dto.response.CertificationResponseDTO;
+import Donggukthon.santa.web.dto.request.MetaDataRequestDTO;
+import Donggukthon.santa.web.dto.request.SubmissionRequestDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
-@RequestMapping("/certification")
+@RequestMapping("/decoration")
 @RestController
-public class CertificationController {
+public class DecorationController {
 
     @Autowired
-    private MemberService memberService;
+    private final MemberService memberService;
+    @Autowired
+    private final DecorationService decorationService;
     @Autowired
     private final TokenProvider tokenProvider;
 
-    // 버튼 클릭 시 증명서 보이기
-    @GetMapping
-    public ApiResponse<CertificationResponseDTO> getCertification(@RequestHeader("Authorization") String authorizationHeader)
+    @PostMapping("/update")
+    public ApiResponse<Void> updateDecoration(
+            @RequestHeader("Authorization") String authorizationHeader,
+            @RequestBody MetaDataRequestDTO metaDataRequestDTO)
     {
+
         String token = authorizationHeader.replace("Bearer ", "");
 
         Long memberId;
+        String meta = metaDataRequestDTO.getMetadata();
 
         try {
             // 유효한 토큰에서 userEmail 추출
@@ -37,13 +44,9 @@ public class CertificationController {
             return new ApiResponse<>(ErrorStatus.INVALID_TOKEN); // 에러 응답 구현
         }
 
-        try {
-            CertificationResponseDTO certificationResponseDTO = memberService.getDonatePersonCertification(memberId)
-                    .orElseThrow(RuntimeException::new);
 
-            return new ApiResponse<>(SuccessStatus.READ_CERTIFICATION, certificationResponseDTO);
-        } catch (RuntimeException e) {
-            return new ApiResponse<>(ErrorStatus.NON_DONATE);
-        }
+        decorationService.updateMetaData(memberId, meta);
+
+        return new ApiResponse<>(SuccessStatus.UPDATE_DECORATION);
     }
 }

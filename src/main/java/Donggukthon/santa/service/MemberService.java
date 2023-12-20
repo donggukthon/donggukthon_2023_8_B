@@ -6,7 +6,6 @@ import Donggukthon.santa.repository.MemberRepository;
 import Donggukthon.santa.repository.SubmissionRepository;
 import Donggukthon.santa.web.dto.request.JoinRequestDTO;
 import Donggukthon.santa.web.dto.response.*;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +17,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class MemberSevice {
+public class MemberService {
 
     private final MemberRepository memberRepository;
     private final SubmissionRepository submissionRepository;
@@ -130,5 +129,23 @@ public class MemberSevice {
     }
 
 
+    public Optional<MemberResponseDTO.MetaResponseDTO> findById(Long id) {
 
+        Optional<Member> member = memberRepository.findById(id);
+        if (!member.isPresent()) {
+            return Optional.empty(); // Member not found
+        }
+        MemberResponseDTO.MetaResponseDTO metaResponseDTO = MemberResponseDTO.MetaResponseDTO.builder()
+                .meta(member.get().getMeta())
+                .email(member.get().getEmail())
+                .name(member.get().getName())
+                .nickname(member.get().getNickname())
+                .gender(member.get().getGender())
+                .phone_number(member.get().getPhoneNumber())
+                .created_at(member.get().getCreatedAt())
+                .build();
+
+        return Optional.of(metaResponseDTO);
+
+    }
 }

@@ -20,8 +20,12 @@ public enum SuccessStatus {
     /** /certification **/
     READ_CERTIFICATION(200, "SUCCESS", "후원증명서를 조회했습니다."),
 
-    /** /free **/
+    /** /tree **/
     READ_TREE_DECORATION(200, "SUCCESS", "트리의 데코레이션들이 조회되었습니다."),
+    READ_MEMBER_METADATA(200, "SUCCESS", "메타데이터를 포함 유저의 정보를 반환했습니다."),
+
+    /** /decoration **/
+    UPDATE_DECORATION(200, "SUCCESS", "유저의 데코레이션이 업데이트 되었습니다."),
 
     /** /submission **/
     SUBMIT_DONATE(200, "SUCCESS", "후원 신청을 완료했습니다."),

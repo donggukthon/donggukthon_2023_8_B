@@ -19,4 +19,19 @@ public final class MemberResponseDTO {
     private String gender;
     private String phone_number;
     private LocalDateTime created_at;
+
+    @Builder
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class MetaResponseDTO {
+
+        private String email;
+        private String name;
+        private String nickname;
+        private String gender;
+        private String phone_number;
+        private LocalDateTime created_at;
+        private String meta;
+    }
 }
