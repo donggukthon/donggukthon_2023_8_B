@@ -1,3 +1,80 @@
+<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=E0F8F7&height=200&section=header&text=Santa&fontSize=90&fontColor=BDBDBD&fontAlign=70&rotate=13&fontAlignY=3"/><br>
+#백엔드 Repository입니다#
+
+</br>
+
+<h3>[프로젝트 설명]</h3>
+<a>우리의 서비스는 겨울철 이벤트성으로 사용할 수 있는 서비스이자 사회문제 해결에 기여할 수 있는 서비스입니다.</a></br>
+<a>기부를 하면 보상으로 3D 트리에 소품을 장식할 수 있고, 메시지 카드를 받을 수 있습니다.</a></br>
+<a>또한, 지인에게 따뜻한 연말인사를 전할 수 있으며, 기부챌린지가 이어집니다. 서비스 수익금은 겨울철 필요한 불우이웃에게 전달 됩니다.</a>
+
+<h3>[개발 기간]</h3>
+<a>2023.12.18~2023.12.20</a></br>
+<h3>[개발 인원]</h3>
+
+#기획</br>
+<a>[이설]</a>
+
+#디자인</br>
+<a>[이민지]</a>
+
+#프론트엔드</br>
+<a>[황재형]</a>
+<a>[김동민]</a>
+
+#백엔드</br>
+<a>[유수민]<a>
+<a href="https://github.com/dmsqor">[홍정표]<a>
+
+<h3>[개발 환경]</h3>
+
+#언어</br>
+<img src="https://img.shields.io/badge/Java(JDK 17)-F80000?style=flat&logo=Oracle&logoColor=white"/>
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white"/>
+<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white"/>
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white"/>
+
+#서버</br>
+<img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=flat&logo=Amazon EC2&logoColor=white"/>
+
+#OS</br>
+<img src="https://img.shields.io/badge/Windows 11-0078D4?style=flat&logo=Windows 11&logoColor=white"/>
+
+#데이터 저장 및 관리</br>
+<img src="https://img.shields.io/badge/MariaDB-003545?style=flat&logo=MariaDB&logoColor=white"/>
+
+#IDE</br>
+<img src="https://img.shields.io/badge/IntelliJ IDEA-000000?style=flat&logo=IntelliJ IDEA&logoColor=white"/>
+<img src="https://img.shields.io/badge/HeldiSQL-569A31?style=flat&logo=&logoColor=white"/>
+<img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=Git&logoColor=white"/>
+
+#개발 도구</br>
+<img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=flat&logo=Spring Boot&logoColor=white"/>
+<img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white"/>
+
+#API</br>
+
+#프로젝트 형상관리</br>
+<img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/>
+
+#웹 디자인 설계</br>
+<img src="https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=Figma&logoColor=white"/>
+
+#협업툴</br>
+<img src="https://img.shields.io/badge/Notion(프로젝트 관리)-000000?style=flat&logo=Notion&logoColor=white"/>
+<img src="https://img.shields.io/badge/KakaoTalk(일정 조율)-FFCD00?style=flat&logo=KakaoTalk&logoColor=white"/></br>
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started
 
 1. File -> open -> build.gradle 더블클릭 -> open as project
