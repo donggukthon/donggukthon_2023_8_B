@@ -2,7 +2,7 @@ package Donggukthon.santa.web.controller;
 
 import Donggukthon.santa.config.TokenProvider;
 import Donggukthon.santa.domain.Member;
-import Donggukthon.santa.service.MemberSevice;
+import Donggukthon.santa.service.MemberService;
 import Donggukthon.santa.service.SubmissionService;
 import Donggukthon.santa.web.apiResponse.ApiResponse;
 import Donggukthon.santa.web.apiResponse.ErrorStatus;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class MemberController {
 
-    private final MemberSevice memberService;
+    private final MemberService memberService;
     private final TokenProvider tokenProvider;
     private final SubmissionService submissionService;
 

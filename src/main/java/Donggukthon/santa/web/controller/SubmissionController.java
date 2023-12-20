@@ -1,7 +1,7 @@
 package Donggukthon.santa.web.controller;
 
 import Donggukthon.santa.config.TokenProvider;
-import Donggukthon.santa.service.MemberSevice;
+import Donggukthon.santa.service.MemberService;
 import Donggukthon.santa.service.SubmissionService;
 import Donggukthon.santa.web.apiResponse.ApiResponse;
 import Donggukthon.santa.web.apiResponse.ErrorStatus;
@@ -19,7 +19,7 @@ public class SubmissionController {
     @Autowired
     private final SubmissionService submissionService;
     @Autowired
-    private final MemberSevice memberSevice;
+    private final MemberService memberService;
     @Autowired
     private final TokenProvider tokenProvider;
 
@@ -36,7 +36,7 @@ public class SubmissionController {
         try {
             // 유효한 토큰에서 userEmail 추출
             String userEmail = tokenProvider.verifyToken(token);
-            memberId = memberSevice.findByEmail(userEmail);
+            memberId = memberService.findByEmail(userEmail);
 
         } catch (Exception e) {
             return new ApiResponse<>(ErrorStatus.INVALID_TOKEN); // 에러 응답 구현
