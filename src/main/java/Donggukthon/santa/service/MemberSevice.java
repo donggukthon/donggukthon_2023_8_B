@@ -107,9 +107,6 @@ public class MemberSevice {
                     .email(joinRequestDto.getEmail())
                     .password(joinRequestDto.getPassword())
                     .name(joinRequestDto.getName())
-                    .nickname(joinRequestDto.getNickname())
-                    .gender(joinRequestDto.getGender())
-                    .phoneNumber(joinRequestDto.getPhoneNumber())
                     .createdAt(LocalDateTime.now())
                     .build();
             memberRepository.save(member);
