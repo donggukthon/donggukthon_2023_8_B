@@ -22,8 +22,8 @@ public class MemberDTO {
     private String name;
     private String nickname;
     private String gender;
-    private String phoneNumber;
-    private LocalDateTime createdAt;
+    private String phone_number;
+    private LocalDateTime created_at;
 
     private List<Submission> submissions = new ArrayList<>();
     private List<DesignatedPerson> designatedpersons = new ArrayList<>();
@@ -36,8 +36,8 @@ public class MemberDTO {
         memberDto.setPassword(member.getPassword());
         memberDto.setName(member.getName());
         memberDto.setGender(member.getGender());
-        memberDto.setPhoneNumber(member.getPhoneNumber());
-        memberDto.setCreatedAt(member.getCreatedAt());
+        memberDto.setPhone_number(member.getPhoneNumber());
+        memberDto.setCreated_at(member.getCreatedAt());
 
         return memberDto;
     }

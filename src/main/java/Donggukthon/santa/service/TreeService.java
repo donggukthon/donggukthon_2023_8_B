@@ -68,7 +68,7 @@ public class TreeService {
                 .location(decoration.getLocation())
 //                .color("Some color") // Populate appropriately
                 .scale(decoration.getScale())
-                .createdAt(decoration.getCreatedAt().toString())
+                .created_at(decoration.getCreatedAt().toString())
                 .build();
     }
 }

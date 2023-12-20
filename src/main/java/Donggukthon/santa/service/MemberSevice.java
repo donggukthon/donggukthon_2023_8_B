@@ -48,7 +48,7 @@ public class MemberSevice {
                     .nickname(member.getNickname())
                     .gender(member.getGender())
                     .phoneNumber(member.getPhoneNumber())
-                    .createdAt(member.getCreatedAt())
+                    .created_at(member.getCreatedAt())
                     .build();
 
 
@@ -81,7 +81,7 @@ public class MemberSevice {
                 .nickname(member.get().getNickname())
                 .gender(member.get().getGender())
                 .phoneNumber(member.get().getPhoneNumber())
-                .createdAt(member.get().getCreatedAt())
+                .created_at(member.get().getCreatedAt())
                 .build();
 
         CertificationResponseDTO certificationResponseDTO = CertificationResponseDTO.builder()
