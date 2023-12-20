@@ -62,7 +62,7 @@ public class MemberController {
     }
 
     @GetMapping("/info")
-    public MemberDTO Userinfo(@RequestHeader("Authorization") String authorizationHeader){
+    public ApiResponse<MemberDTO> Userinfo(@RequestHeader("Authorization") String authorizationHeader){
 
         String token = authorizationHeader.replace("Bearer ", "");
 
@@ -70,9 +70,9 @@ public class MemberController {
             String userEmail = tokenProvider.verifyToken(token);
             MemberDTO memberDTO = memberService.findUserByEmail(userEmail);
 
-            return memberDTO;
+            return new ApiResponse<>(SuccessStatus.USER_INFO, memberDTO);
         } catch (Exception e) {
-            throw new RuntimeException("유저 정보 반환 실패");
+            return new ApiResponse<>(ErrorStatus.USER_INFO);
         }
     }
 

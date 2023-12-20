@@ -18,6 +18,7 @@ public enum ErrorStatus {
     JOIN_USER(400, "FAIL", "회원가입에 실패하였습니다."),
     LOGIN_USER(401, "FAIL", "비밀번호가 일치하지 않습니다."),
     CANNOT_FIND_EMAIL(400, "FAIL", "이메일을 찾을 수 없습니다."),
+    USER_INFO(400, "FAIL", "유저 정보 반환 실패"),
 
     /** /certification **/
     NON_DONATE(400, "FAIL", "아직 기부하지 않은 멤버입니다.");
