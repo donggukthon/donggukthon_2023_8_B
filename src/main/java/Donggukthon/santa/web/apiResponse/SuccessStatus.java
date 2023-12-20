@@ -15,6 +15,7 @@ public enum SuccessStatus {
     /** /user **/
     JOIN_USER(201, "SUCCESS", "회원가입이 완료되었습니다."),
     LOGIN_USER(200, "SUCCESS", "로그인이 완료되었습니다."),
+    USER_INFO(200, "SUCCESS", "유저 정보를 반환했습니다."),
 
     /** /certification **/
     READ_CERTIFICATION(200, "SUCCESS", "후원증명서를 조회했습니다."),

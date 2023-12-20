@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -101,7 +102,7 @@ public class MemberSevice {
         boolean memberExists = memberRepository.existsMemberByEmail(joinRequestDto.getEmail());
 
         if (memberExists) {
-            throw new RuntimeException("이미 존재하는 회원입니다.");
+           return null;
         }else{
             Member member = Member.builder()
                     .email(joinRequestDto.getEmail())
@@ -115,9 +116,17 @@ public class MemberSevice {
     }
 
     public MemberDTO findUserByEmail(String email){
-        Member member = memberRepository.findMemberByEmail(email).orElseThrow(() -> new RuntimeException("유저를 찾을 수 없습니다."));
-        MemberDTO memberDto = MemberDTO.toMemberDto(member);
-        return memberDto;
+        try{
+            Member member = memberRepository.findMemberByEmail(email).orElseThrow(() -> new NoSuchElementException("해당 이메일의 회원을 찾을 수 없습니다."));
+            MemberDTO memberDto = MemberDTO.toMemberDto(member);
+            return memberDto;
+        }catch (Exception e){
+            return null;
+        }
+
+
+
+                //.orElseThrow(() -> new RuntimeException("유저를 찾을 수 없습니다."));
     }
 
 

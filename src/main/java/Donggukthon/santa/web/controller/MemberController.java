@@ -29,20 +29,25 @@ public class MemberController {
     public ResponseEntity<ApiResponse> joinUser(@RequestBody JoinRequestDTO joinRequestDto){
 
         Member member = memberService.signUp(joinRequestDto);
-
         if(member != null){
             ApiResponse response = new ApiResponse<>(SuccessStatus.JOIN_USER, member);
             return ResponseEntity.ok(response);
         }else{
-            ApiResponse response = new ApiResponse(SuccessStatus.JOIN_USER);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+            ApiResponse response = new ApiResponse(ErrorStatus.JOIN_USER);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
+
     }
 
     @PostMapping("/login")
     public ResponseEntity<ApiResponse<String>> loginUser(@RequestBody LoginRequestDTO loginRequestDto){
 
         MemberDTO memberDto = memberService.findUserByEmail(loginRequestDto.getEmail());
+
+        if(memberDto == null){
+            ApiResponse response = new ApiResponse<>(ErrorStatus.CANNOT_FIND_EMAIL);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
 
         if(memberDto.getPassword().equals(loginRequestDto.getPassword())){
             String generatedToken = tokenProvider.generateToken(loginRequestDto.getEmail());
@@ -51,13 +56,13 @@ public class MemberController {
             return ResponseEntity.ok(response);
         }else{
             ApiResponse<String> response = new ApiResponse<>(ErrorStatus.LOGIN_USER);
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
 
     }
 
     @GetMapping("/info")
-    public MemberDTO Userinfo(@RequestHeader("Authorization") String authorizationHeader){
+    public ApiResponse<MemberDTO> Userinfo(@RequestHeader("Authorization") String authorizationHeader){
 
         String token = authorizationHeader.replace("Bearer ", "");
 
@@ -65,9 +70,9 @@ public class MemberController {
             String userEmail = tokenProvider.verifyToken(token);
             MemberDTO memberDTO = memberService.findUserByEmail(userEmail);
 
-            return memberDTO;
+            return new ApiResponse<>(SuccessStatus.USER_INFO, memberDTO);
         } catch (Exception e) {
-            throw new RuntimeException("유저 정보 반환 실패");
+            return new ApiResponse<>(ErrorStatus.USER_INFO);
         }
     }
 
