@@ -17,6 +17,6 @@ public final class MemberResponseDTO {
     private String name;
     private String nickname;
     private String gender;
-    private String phoneNumber;
-    private LocalDateTime createdAt;
+    private String phone_number;
+    private LocalDateTime created_at;
 }

@@ -15,5 +15,5 @@ public class DecorationResponseDTO {
     private int scale;
     private int degree;
     private String floor;
-    private String createdAt;
+    private String created_at;
 }
