@@ -135,6 +135,11 @@ public class MemberService {
         if (!member.isPresent()) {
             return Optional.empty(); // Member not found
         }
+        Optional<Submission> submission = submissionRepository.findByMemberId(id);
+        if (!submission.isPresent()) {
+            return Optional.empty(); // Member not found
+        }
+
         MemberResponseDTO.MetaResponseDTO metaResponseDTO = MemberResponseDTO.MetaResponseDTO.builder()
                 .meta(member.get().getMeta())
                 .email(member.get().getEmail())
@@ -143,6 +148,7 @@ public class MemberService {
                 .gender(member.get().getGender())
                 .phone_number(member.get().getPhoneNumber())
                 .created_at(member.get().getCreatedAt())
+                .card_message(submission.get().getCardMessage())
                 .build();
 
         return Optional.of(metaResponseDTO);
