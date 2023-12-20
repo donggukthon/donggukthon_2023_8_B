@@ -16,6 +16,8 @@ public class TokenProvider {
 
     public String generateToken(String userEmail) {
 
+        long expirationTimeInMs = 7 * 24 * 60 * 60 * 1000;
+
         Claims claims = Jwts.claims();
         claims.put("userEmail", userEmail);
 
@@ -23,7 +25,7 @@ public class TokenProvider {
                 //.setSubject(useremail)
                 .setClaims(claims)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 3600000))
+                .setExpiration(new Date(System.currentTimeMillis() + expirationTimeInMs))
                 .signWith(key)
                 .compact();
         return jwtToken;
