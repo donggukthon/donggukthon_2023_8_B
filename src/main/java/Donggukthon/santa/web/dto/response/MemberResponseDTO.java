@@ -33,5 +33,7 @@ public final class MemberResponseDTO {
         private String phone_number;
         private LocalDateTime created_at;
         private String meta;
+
+        private String card_message;
     }
 }
