@@ -114,11 +114,11 @@
 ### 홍보자료
 
 <p align="center">
-  <img src="image/IMG_3050.JPG" width="30%"> <img src="image/IMG_3051.JPG" width="28.3%">
+  <img src="image/IMG_3050.JPG" width="46%"> <img src="image/IMG_3051.JPG" width="43.3%">
 </p>
 <br>
 <p align="center">
-  <img src="image/IMG_3052.PNG" width="30%"> <img src="image/IMG_3053.JPG" width="23.7%">
+  <img src="image/IMG_3052.PNG" width="48%"> <img src="image/IMG_3053.JPG" width="37.9%">
 </p>
 
 ## 💌 후원증서
